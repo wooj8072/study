@@ -1,11 +1,14 @@
 package com.study.book.springboot.web;
 
 //import com.study.book.springboot.config.auth.SecurityConfig;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+//import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -25,19 +28,8 @@ import java.security.Security;
 // 즉, 스프링 부트 테스트와 JUnit 사이에 연결자 역할을 합니다.
 @ExtendWith(SpringExtension.class)
 
-// @WebMvcTest - 여러 스프링 테스트 어노테이션 중, Web(Spring MVC)에 집중할 수 있는 어노테이션 입니다.
-// 선언할 경우 @Controller, @ControllerAdvice 등을 사용할 수 있습니다.
-// 단, @Service, @Component, @Repository 등은 사용할 수 없습니다.
-// 여기서는 컨트롤러만 사용하기 때문에 선언합니다.
 @WebMvcTest(controllers = HelloController.class)
 @AutoConfigureMockMvc(addFilters = false)
-        //@WebMvcTest를 사용하는 HelloController는 @WebSecurityConfigurerAdapter, WebMvcConfigurer를 비홋한
-        //@ControllerAdvice, @Controller를 읽습니다. 즉, @Repository, @Service, @Component는
-        //스캔 대상이 아닙니다.. SecurityConfig는 읽었지만, SecurityConfig를 생성하기 위해 필요한
-        //CustomOAuth2UserSerivce는 읽을 수가 없어 에러가 발생한 것입니다. 이를 해결하기 위해 스캔 대상에서 SecurityConfig를 제거합니다.
-//        excludeFilters = {
-//                @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = SecurityConfig.class)
-//        }
 
 public class HelloControllerTest {
     @Autowired // 스프링이 관리하는 Bean을 주입 받습니다.
@@ -62,4 +54,20 @@ public class HelloControllerTest {
                 // Controller에서 "hello"를 리턴하기 때문에 이 값이 맞는지 검증합니다.
                 .andExpect(content().string(hello));
     }
+
+    @Test
+    public void hellpDto가_리턴된다() throws Exception {
+        String name = "hello";
+        int amount = 1000;
+
+        mvc.perform(
+                        get("/hello/dto")
+                                .param("name", name) //param api테스트할 때 요청될 파라미터 설정. 문자열만 가능함.
+                                .param("amount", String.valueOf(amount)))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", is(name))) //json을 응답값을 필드별로 검증할 수 잇는 메소드.
+                .andExpect(jsonPath("$.amount", is(amount)));
+
+    }
 }
+
