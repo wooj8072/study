@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners(AbstractMethodError.class)
 public class BaseTimeEntity {
-    @CreatedDate
-    private LocalDateTime createDate;
+    @CreatedDate // 3.
+    private LocalDateTime createdDate;
 
-    @LastModifiedDate
+    @LastModifiedDate // 4.
     private LocalDateTime modifiedDate;
 }
