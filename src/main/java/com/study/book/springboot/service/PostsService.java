@@ -33,4 +33,11 @@ public class PostsService {
                 .orElseThrow(()->new IllegalArgumentException("해당 게시글 없음 ID =" + id));
         return new PostsResponseDto(entity);
     }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
+    }
 }
