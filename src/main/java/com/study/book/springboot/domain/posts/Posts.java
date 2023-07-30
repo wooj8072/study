@@ -20,7 +20,6 @@ public class Posts extends BaseTimeEntity{
 
     @Column(columnDefinition = "Text", nullable = false)
     private String content;
-
     private String author;
 
     @Builder
