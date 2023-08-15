@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<User> findById(String enail);//findById : 소셜로그인으로 반환되는 값 중 email을 통해서
+    Optional<User> findByEmail(String enail);//findById : 소셜로그인으로 반환되는 값 중 email을 통해서
                                          //            이미 생성됐는지 처음가입인지 판단.
 }

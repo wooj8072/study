@@ -1,5 +1,6 @@
 package com.study.book.springboot.config.auth;
 
+//import com.study.book.springboot.domain.user.Role;
 import com.study.book.springboot.domain.user.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
