@@ -1,0 +1,19 @@
+language: java
+jdk:
+  -openjdk8
+
+branches:
+  only:
+    -master
+
+cache:
+  directories:
+    - '$HOME/.m2/repository/;
+    - '$HOME/.m2/gradle'
+script: "./gradle clean build"
+
+
+notifications:
+  email:
+    recipiens:
+      -wooj8072@gmail.com
