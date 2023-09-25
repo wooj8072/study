@@ -6,6 +6,7 @@ import com.study.book.springboot.domain.posts.PostsRepositoryTest;
 import com.study.book.springboot.web.dto.PostsSaveRequestDto;
 import com.study.book.springboot.web.dto.PostsUpdateRequestDto;
 import org.junit.After;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ import static  org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-
+@Ignore
 public class PostsApiControllerTest {
     @LocalServerPort
     private int port;

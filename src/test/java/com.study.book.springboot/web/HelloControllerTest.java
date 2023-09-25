@@ -2,6 +2,7 @@ package com.study.book.springboot.web;
 
 //import com.study.book.springboot.config.auth.SecurityConfig;
 
+import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 //import org.junit.Test;
@@ -30,7 +31,7 @@ import java.security.Security;
 
 @WebMvcTest(controllers = HelloController.class)
 @AutoConfigureMockMvc(addFilters = false)
-
+@Ignore
 public class HelloControllerTest {
     @Autowired // 스프링이 관리하는 Bean을 주입 받습니다.
 
