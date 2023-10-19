@@ -4,7 +4,7 @@ jdk:
 
 branches:
   only:
-    -master
+    - master
 
 #Travis CI 서버의 Home
 cache:
@@ -18,8 +18,8 @@ before_install:
 
 script: "./gradle clean build"
 
-# CI 실행 완료 시 메일로 알람
+# CI 실행 완료시 메일로 알람
 notifications:
   email:
-    recipiens:
-      -wooj8072@gmail.com
+    recipients:
+      - wooj8072@gmail.com
