@@ -13,19 +13,20 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 group 'com.jojoldu.book'
-version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
-sourceCompatibility = 1.8
+//version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
 
 repositories {
     mavenCentral()
     jcenter()
 }
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 dependencies {
     implementation ('org.springframework.boot:spring-boot-starter-web')
@@ -44,5 +45,4 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
     compileOnly 'org.springframework.boot:spring-boot-starter-oauth2-client'
-
 }
