@@ -13,6 +13,7 @@ cache:
     - '$HOME/.m2/gradle'
 
 before_install:
+  - sudo apt-get install openjdk-8-jdk
   - chmod +x gradlew
 
 
