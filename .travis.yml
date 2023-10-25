@@ -18,7 +18,7 @@ cache:
   # cache: false
 
 before_install:
-  - sudo apt-get install openjdk-8-jdk
+#  - sudo apt-get install openjdk-8-jdk
   - chmod +x gradlew
 
 # 수정한 부분: script 설정 변경
